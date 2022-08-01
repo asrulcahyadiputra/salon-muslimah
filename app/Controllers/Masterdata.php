@@ -70,6 +70,7 @@ class Masterdata extends BaseController
         $this->db->table('tb_satuan')
             ->insert($data);
 
+        session()->setFlashdata('sukses', 'Data Satuan Berhasil di Tambahkan');
         return redirect()->to('/user/dashboard/masterdata/satuan');
     }
 
@@ -85,6 +86,7 @@ class Masterdata extends BaseController
         $this->db->table('tb_satuan')
             ->where('id', $id)
             ->update($data);
+        session()->setFlashdata('sukses', 'Data Satuan Berhasil di Update');
 
         return redirect()->to('/user/dashboard/masterdata/satuan');
     }

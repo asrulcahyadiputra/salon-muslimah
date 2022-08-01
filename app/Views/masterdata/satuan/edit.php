@@ -4,10 +4,10 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Masterdata Satuan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/user/dashboard/masterdata/satuan/edit" method="post">
+            <form action="/user/dashboard/masterdata/satuan/edit" method="post" id="form-edit">
                 <div class="modal-body">
                     <input type="hidden" id="id" name="id">
                     <div class="form-group row">
