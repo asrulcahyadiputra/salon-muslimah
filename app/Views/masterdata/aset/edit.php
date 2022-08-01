@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/user/dashboard/masterdata/aset/update" method="post">
+            <form action="/user/dashboard/masterdata/aset/update" method="post" id="form-edit">
                 <div class="modal-body">
                     <div class="form-group row">
                         <label for="id_aset" class="col-sm-3 col-form-label">ID Aset</label>
@@ -33,7 +33,7 @@
                     <div class="form-group row">
                         <label for="harga_aset" class="col-sm-3 col-form-label">Harga Aset</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="harga_aset" name="harga_aset" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                            <input type="text" class="form-control" id="harga_aset" name="harga_aset" data-type="currency">
                         </div>
                     </div>
                     <div class="form-group row">

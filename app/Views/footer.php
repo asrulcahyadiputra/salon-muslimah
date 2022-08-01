@@ -43,6 +43,8 @@
 <script src="<?= base_url('template'); ?>/assets/js/scripts.js"></script>
 <script src="<?= base_url('template'); ?>/assets/js/custom.js"></script>
 
+
+
 <!-- Page Specific JS File -->
 <!-- <script src="<? #= base_url('template'); 
                     ?>/assets/js/page/index-0.js"></script> -->
@@ -50,6 +52,7 @@
 <script src="<?= base_url('/js/script.js'); ?>"></script>
 <script src="<?= base_url('/js/service.js'); ?>"></script>
 <script src="<?= base_url('currency.js') ?>"></script>
+<script src="<?= base_url() ?>/validate/jquery.validate.min.js"></script>
 <script>
     function previewImg() {
         const sampul = document.querySelector('#user_image');

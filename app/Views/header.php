@@ -27,4 +27,13 @@
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jautocalc@1.3.1/dist/jautocalc.js"></script> -->
     <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script> -->
+    <style>
+        .has-error {
+            color: red;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
 </head>

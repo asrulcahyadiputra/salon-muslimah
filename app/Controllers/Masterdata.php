@@ -348,7 +348,7 @@ class Masterdata extends BaseController
     {
         $id_aset = $this->request->getVar('id_aset');
         $nama_aset = $this->request->getVar('nama_aset');
-        $harga_aset = $this->request->getVar('harga_aset');
+        $harga_aset = set_number($this->request->getVar('harga_aset'));
         $satuan = $this->request->getVar('satuan');
         $jenis_aset = $this->request->getVar('jenis_aset');
 
@@ -364,6 +364,9 @@ class Masterdata extends BaseController
         $this->db->table('tb_aset')
             ->insert($data);
 
+
+        session()->setFlashdata('sukses', 'Data Aset Berhasil di Tambahkan');
+
         return redirect()->to('/user/dashboard/masterdata/aset');
     }
 
@@ -371,7 +374,7 @@ class Masterdata extends BaseController
     {
         $id_aset = $this->request->getVar('id_aset');
         $nama_aset = $this->request->getVar('nama_aset');
-        $harga_aset = $this->request->getVar('harga_aset');
+        $harga_aset = set_number($this->request->getVar('harga_aset'));
         $satuan = $this->request->getVar('satuan');
         $jenis_aset = $this->request->getVar('jenis_aset');
 
@@ -387,6 +390,8 @@ class Masterdata extends BaseController
         $this->db->table('tb_aset')
             ->where('id_aset', $id_aset)
             ->update($data);
+
+        session()->setFlashdata('sukses', 'Data Aset Berhasil di Update');
 
         return redirect()->to('/user/dashboard/masterdata/aset');
     }
