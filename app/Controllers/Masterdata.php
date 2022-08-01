@@ -278,6 +278,8 @@ class Masterdata extends BaseController
         $this->db->table('tb_pelanggan')
             ->insert($data);
 
+        session()->setFlashdata('sukses', 'Data Pelanggan Berhasil di Tambahkan!');
+
         return redirect()->to('/user/dashboard/masterdata/pelanggan');
     }
 
@@ -297,6 +299,8 @@ class Masterdata extends BaseController
         $this->db->table('tb_pelanggan')
             ->where('id_pelanggan', $id_pelanggan)
             ->update($data);
+
+        session()->setFlashdata('sukses', 'Data Pelanggan Berhasil di Update!');
 
         return redirect()->to('/user/dashboard/masterdata/pelanggan');
     }

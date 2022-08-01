@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/user/dashboard/masterdata/pelanggan/save" method="post">
+            <form action="/user/dashboard/masterdata/pelanggan/save" method="post" id="form-tambah">
                 <div class="modal-body">
                     <div class="form-group row">
                         <label for="id_pelanggan" class="col-sm-3 col-form-label">ID Pelanggan</label>
@@ -33,7 +33,7 @@
                     <div class="form-group row">
                         <label for="no_telp" class="col-sm-3 col-form-label">No. Telp</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="no_telp" name="no_telp">
+                            <input type="text" class="form-control" id="no_telp" name="no_telp">
                         </div>
                     </div>
                 </div>
