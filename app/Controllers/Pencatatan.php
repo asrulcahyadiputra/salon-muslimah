@@ -990,7 +990,7 @@ class Pencatatan extends BaseController
             ]
         ])) {
 
-            session()->setFlashData('pesan', 'Kode Akun yang anda masukkan sudah terdaftar!');
+            session()->setFlashData('warning', 'Kode Akun yang anda masukkan sudah terdaftar!');
 
             return redirect()->to('/user/dashboard/pencatatan-kas/akun')->withInput();
         }
@@ -1015,7 +1015,7 @@ class Pencatatan extends BaseController
             // 'tanggalPembayaran' => $this->request->getVar('tanggalPembayaran')
         ]);
 
-        session()->setFlashData('pesan2', 'Data berhasil ditambahkan!');
+        session()->setFlashData('sukses', 'Data berhasil ditambahkan!');
 
         return redirect()->to('/user/dashboard/pencatatan-kas/akun');
     }
