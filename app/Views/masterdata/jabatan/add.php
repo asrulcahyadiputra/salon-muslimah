@@ -4,10 +4,10 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Masterdata Jabatan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('user/dashboard/masterdata/jabatan/save')?>" method="post">
+            <form action="<?= base_url('user/dashboard/masterdata/jabatan/save') ?>" method="post" id="form-tambah">
                 <div class="modal-body">
                     <div class="form-group row">
                         <label for="deskripsi" class="col-sm-3 col-form-label">Deskripsi</label>
@@ -18,7 +18,7 @@
                     <div class="form-group row">
                         <label for="gapok" class="col-sm-3 col-form-label">Gaji Pokok</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="gapok" name="gapok" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                            <input type="text" class="form-control" id="gapok" name="gapok" data-type="currency">
                         </div>
                     </div>
                 </div>

@@ -16,9 +16,12 @@
             </div>
         </div>
     </section>
-    <?php if (session()->getFlashdata('pesan')) : ?>
-        <div class="alert alert-success" role="alert">
-            <?= session()->getFlashdata('pesan'); ?>
+    <?php if (session()->getFlashdata('sukses')) : ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Sukses!</strong> <?= session()->getFlashdata('sukses') ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     <?php endif; ?>
     <section class="section" style="background-color: white; padding: 2rem; box-shadow: 1px 2px 3px 1px rgba(0,0,0,0.75); border-radius: 15px;">
@@ -42,21 +45,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php 
+                            <?php
                             $no = 1;
                             foreach ($kategori as $row) { ?>
-                            <tr>
-                                <td><?= $no++ ?></td>
-                                <td><?= $row->keterangan ?></td>
-                                <td>
-                                    <button 
-                                    data-id="<?= $row->id?>"
-                                    data-keterangan="<?= $row->keterangan?>" 
-                                    data-toggle="modal" 
-                                    data-target="#edit" 
-                                    class="btn btn-warning edit">Edit</button>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= $row->keterangan ?></td>
+                                    <td>
+                                        <button data-id="<?= $row->id ?>" data-keterangan="<?= $row->keterangan ?>" data-toggle="modal" data-target="#edit" class="btn btn-warning edit">Edit</button>
+                                    </td>
+                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>
@@ -68,6 +66,7 @@
 <?= $this->include('masterdata/kategori/add'); ?>
 <?= $this->include('masterdata/kategori/edit'); ?>
 <script src="<?= base_url('/js/vanilla-tilt.js'); ?>"></script>
+<script src="<?= base_url() ?>/validate/jquery.validate.min.js"></script>
 <script type="text/javascript">
     VanillaTilt.init(document.querySelectorAll(".info_card"), {
         max: 25,
@@ -81,10 +80,48 @@
         $("#tablemenu").DataTable();
     });
 
-    $(document).on("click", ".edit", function () {
-     var id = $(this).data('id');
-     var keterangan = $(this).data('keterangan');
-     $(".modal-body #id").val( id );
-     $(".modal-body #keterangan").val( keterangan );
-});
+    $(document).on("click", ".edit", function() {
+        var id = $(this).data('id');
+        var keterangan = $(this).data('keterangan');
+        $(".modal-body #id").val(id);
+        $(".modal-body #keterangan").val(keterangan);
+    });
+
+
+    $('#form-tambah').validate({
+        errorClass: "control-label",
+        highlight: function(element, errorClass) {
+            $(element).parent().addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parent().removeClass('error');
+        },
+        rules: {
+            keterangan: {
+                required: true
+            },
+        },
+        submitHandler: function(form, event) {
+            $('#form-tambah').submit();
+        }
+    });
+
+    $('#form-edit').validate({
+        errorClass: "control-label",
+        highlight: function(element, errorClass) {
+            $(element).parent().addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parent().removeClass('has-error');
+        },
+        rules: {
+            keterangan: {
+                required: true
+            },
+
+        },
+        submitHandler: function(form, event) {
+            $('#form-edit').submit();
+        }
+    });
 </script>

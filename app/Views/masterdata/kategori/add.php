@@ -4,10 +4,10 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Masterdata Kategori</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/user/dashboard/masterdata/kategori/save" method="post">
+            <form action="/user/dashboard/masterdata/kategori/save" method="post" id="form-tambah">
                 <div class="modal-body">
                     <div class="form-group row">
                         <label for="keterangan" class="col-sm-3 col-form-label">Keterangan</label>

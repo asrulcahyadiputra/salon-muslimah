@@ -128,7 +128,7 @@ class Masterdata extends BaseController
     public function jabatanSave()
     {
         $deskripsi = $this->request->getVar('deskripsi');
-        $gapok = $this->request->getVar('gapok');
+        $gapok = set_number($this->request->getVar('gapok'));
 
         $data = [
             'deskripsi' => $deskripsi,
@@ -136,14 +136,14 @@ class Masterdata extends BaseController
         ];
         $this->db->table('tb_jabatan')
             ->insert($data);
-
+        session()->setFlashdata('sukses', 'Data Jabatan Berhasil di tambahkan');
         return redirect()->to('user/dashboard/masterdata/jabatan');
     }
     public function jabatanUpdate()
     {
         $id = $this->request->getVar('id');
         $deskripsi = $this->request->getVar('deskripsi');
-        $gapok = $this->request->getVar('gapok');
+        $gapok = set_number($this->request->getVar('gapok'));
 
         $data = [
             'deskripsi' => $deskripsi,
@@ -152,7 +152,7 @@ class Masterdata extends BaseController
         $this->db->table('tb_jabatan')
             ->where('id', $id)
             ->update($data);
-
+        session()->setFlashdata('sukses', 'Data Jabatan Berhasil di update');
         return redirect()->to('user/dashboard/masterdata/jabatan');
     }
 
@@ -202,7 +202,7 @@ class Masterdata extends BaseController
     public function jenis_serviceSave()
     {
         $jenisService = $this->request->getVar('jenisService');
-        $harga_service = $this->request->getVar('harga_service');
+        $harga_service = set_number($this->request->getVar('harga_service'));
 
         $data = [
             'jenisService' => $jenisService,
@@ -211,14 +211,14 @@ class Masterdata extends BaseController
 
         $this->db->table('jenisservice')
             ->insert($data);
-
+        session()->setFlashdata('sukses', 'Data Jenis Service Berhasil di tambahkan');
         return redirect()->to('/user/dashboard/masterdata/jenis_service');
     }
     public function jenis_serviceEdit()
     {
         $id = $this->request->getVar('id');
         $jenisService = $this->request->getVar('jenisService');
-        $harga_service = $this->request->getVar('harga_service');
+        $harga_service = set_number($this->request->getVar('harga_service'));
 
         $data = [
             'jenisService' => $jenisService,
@@ -228,7 +228,7 @@ class Masterdata extends BaseController
         $this->db->table('jenisservice')
             ->where('id', $id)
             ->update($data);
-
+        session()->setFlashdata('sukses', 'Data Jenis Service Berhasil di update');
         return redirect()->to('/user/dashboard/masterdata/jenis_service');
     }
 
@@ -457,7 +457,7 @@ class Masterdata extends BaseController
         ];
         $this->db->table('tb_kategori')
             ->insert($data);
-
+        session()->setFlashdata('sukses', 'Data Kategori berhasil di tambahkan');
         return redirect()->to('/user/dashboard/masterdata/kategori');
     }
 
@@ -474,7 +474,7 @@ class Masterdata extends BaseController
         $this->db->table('tb_kategori')
             ->where('id', $id)
             ->update($data);
-
+        session()->setFlashdata('sukses', 'Data Kategori berhasil di update');
         return redirect()->to('/user/dashboard/masterdata/kategori');
     }
 

@@ -16,9 +16,12 @@
             </div>
         </div>
     </section>
-    <?php if (session()->getFlashdata('pesan')) : ?>
-        <div class="alert alert-success" role="alert">
-            <?= session()->getFlashdata('pesan'); ?>
+    <?php if (session()->getFlashdata('sukses')) : ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Sukses!</strong> <?= session()->getFlashdata('sukses') ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     <?php endif; ?>
     <section class="section" style="background-color: white; padding: 2rem; box-shadow: 1px 2px 3px 1px rgba(0,0,0,0.75); border-radius: 15px;">
@@ -40,30 +43,24 @@
                                 <th>ID</th>
                                 <th>Jenis Service</th>
                                 <th>Harga Service</th>
-                        
+
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <?php 
-                        $no = 1;
-                        foreach ($jenis_service as $row) { ?>
-                            <tr>
-                                <td><?= $no++ ?></td>
-                                <td><?= $row->id?></td>
-                                <td><?= $row->jenisService?></td>
-                                <td><?= $row->harga_service?></td>
-                                <td>
-                                <button 
-                                    data-id="<?= $row->id?>"
-                                    data-jenisService="<?= $row->jenisService ?>" 
-                                    data-harga_service="<?= $row->harga_service?>" 
-                                    data-toggle="modal" 
-                                    data-target="#edit" 
-                                    class="btn btn-warning edit">Edit</button>
-                                </td>
-                            </tr>
-                        <?php } ?>
+                            <?php
+                            $no = 1;
+                            foreach ($jenis_service as $row) { ?>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= $row->id ?></td>
+                                    <td><?= $row->jenisService ?></td>
+                                    <td class="text-right"><?= 'Rp ' . number_format($row->harga_service, 2, ',', '.') ?></td>
+                                    <td>
+                                        <button data-id="<?= $row->id ?>" data-jenis_service="<?= $row->jenisService ?>" data-harga_service="<?= $row->harga_service ?>" data-toggle="modal" data-target="#edit" class="btn btn-warning edit">Edit</button>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -74,6 +71,7 @@
 <?= $this->include('masterdata/jenis_service/add'); ?>
 <?= $this->include('masterdata/jenis_service/edit'); ?>
 <script src="<?= base_url('/js/vanilla-tilt.js'); ?>"></script>
+<script src="<?= base_url() ?>/validate/jquery.validate.min.js"></script>
 <script type="text/javascript">
     VanillaTilt.init(document.querySelectorAll(".info_card"), {
         max: 25,
@@ -87,13 +85,56 @@
         $("#tablemenu").DataTable();
     });
 
-    $(document).on("click", ".edit", function () {
-     var id = $(this).data('id');
-     var jenisService = $(this).data('jenisService');
-     var harga_service = $(this).data('harga_service');
+    $(document).on("click", ".edit", function() {
+        var id = $(this).data('id');
+        var jenisService = $(this).data('jenis_service');
+        var harga_service = $(this).data('harga_service');
 
-     $(".modal-body #id").val( id );
-     $(".modal-body #jenisService").val( jenisService );
-     $(".modal-body #harga_service").val( harga_service );
-});
+        $(".modal-body #id").val(id);
+        $(".modal-body #jenisService").val(jenisService);
+        $(".modal-body #harga_service").val(harga_service);
+    });
+
+    $('#form-tambah').validate({
+        errorClass: "control-label",
+        highlight: function(element, errorClass) {
+            $(element).parent().addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parent().removeClass('error');
+        },
+        rules: {
+            jenisService: {
+                required: true
+            },
+            harga_service: {
+                required: true
+            }
+        },
+        submitHandler: function(form, event) {
+            $('#form-tambah').submit();
+        }
+    });
+
+    $('#form-edit').validate({
+        errorClass: "control-label",
+        highlight: function(element, errorClass) {
+            $(element).parent().addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parent().removeClass('has-error');
+        },
+        rules: {
+            jenisService: {
+                required: true
+            },
+            harga_service: {
+                required: true
+            }
+
+        },
+        submitHandler: function(form, event) {
+            $('#form-edit').submit();
+        }
+    });
 </script>
