@@ -167,7 +167,7 @@ class Penggajian extends BaseController
         /** jurnal */
         $this->jurnal->generateJurnal($id_gaji, date('Y-m-d'), '520', 'Penggajian periode ' . date('Y-m', strtotime($tgl_gaji)) . ' ', 'd', $gaji_bersih);
         $this->jurnal->generateJurnal($id_gaji, date('Y-m-d'), '111', 'Penggajian periode ' . date('Y-m', strtotime($tgl_gaji)) . ' ', 'k', $gaji_bersih);
-
+        session()->setFlashdata('sukses', 'Data penggajian berhasil ditambahkan');
         return redirect()->to('user/dashboard/penggajian');
     }
 }

@@ -160,6 +160,7 @@ class Absensi extends BaseController
         $this->WaktuAbsensiKaryawanModel->save([
             'idKaryawan' => $this->request->getVar('idKaryawan')
         ]);
+        session()->setFlashdata('sukses', 'Data berhasil di tambahkan');
         return redirect()->to('/user/dashboard/absensi/karyawan');
     }
 
@@ -178,6 +179,7 @@ class Absensi extends BaseController
         $res = $this->db->table('karyawan')->where('idKaryawan', $id)->update($data);
 
         // return $this->response->setJSON($data);
+        session()->setFlashdata('sukses', 'Data berhasil di update');
         return redirect()->to('/user/dashboard/absensi/karyawan');
     }
     public function saveAbsen()
@@ -194,6 +196,7 @@ class Absensi extends BaseController
             'idKaryawan' => $this->request->getVar('idKaryawan'),
             'keterangan' => $this->request->getVar('keterangan')
         ]);
+        session()->setFlashdata('sukses', 'Data absensi di tambahkan');
         return redirect()->to('/user/dashboard/absensi/karyawan');
     }
 }

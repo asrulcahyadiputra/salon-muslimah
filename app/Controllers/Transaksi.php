@@ -229,6 +229,7 @@ class Transaksi extends BaseController
 
         /** isi jurnal disini */
 
+        session()->setFlashdata('sukses', 'Data penjualan berhasil ditambahkan');
         return redirect()->to('Transaksi/penjualan');
     }
 
@@ -431,7 +432,7 @@ class Transaksi extends BaseController
         /** jurnal */
         $this->jurnal->generateJurnal($id_transaksi, date('Y-m-d'), '500', 'Pembelian Bahan', 'd', $grandtotal);
         $this->jurnal->generateJurnal($id_transaksi, date('Y-m-d'), '111', 'Pembelian Bahan', 'k', $grandtotal);
-
+        session()->setFlashdata('sukses', 'Data pembelian berhasil ditambahkan');
         return redirect()->to('Transaksi/pembelian');
     }
 
@@ -632,7 +633,7 @@ class Transaksi extends BaseController
         /** jurnal */
         $this->jurnal->generateJurnal($id_transaksi, date('Y-m-d'), '122', 'Pengeluaran Aset', 'd', $grandtotal);
         $this->jurnal->generateJurnal($id_transaksi, date('Y-m-d'), '111', 'Pengeluaran Aset', 'k', $grandtotal);
-
+        session()->setFlashdata('sukses', 'Data pembelian aset berhasil ditambahkan');
         return redirect()->to('user/transaksi/pengeluaranAset');
     }
 

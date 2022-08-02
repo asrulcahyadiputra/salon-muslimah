@@ -18,13 +18,13 @@
                     <div class="form-group row">
                         <label for="id_transaksi" class="col-sm-4 col-form-label">ID Transaksi</label>
                         <div class="col-sm-8">
-                        <input type="text" readonly class="form-control" id="id_transaksi" name="id_transaksi" value="<?= $kode ?>">
+                            <input type="text" readonly class="form-control" id="id_transaksi" name="id_transaksi" value="<?= $kode ?>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="tgl_transaksi" class="col-sm-4 col-form-label">Tgl. Transaksi</label>
                         <div class="col-sm-8">
-                        <input type="date" class="form-control" id="tgl_transaksi" name="tgl_transaksi" value="<?= date('Y-m-d') ?>" readonly>
+                            <input type="date" class="form-control" id="tgl_transaksi" name="tgl_transaksi" value="<?= date('Y-m-d') ?>" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -33,7 +33,7 @@
                             <select name="product" id="product" class="form-control" name="product" required>
                                 <option value="">-</option>
                                 <?php foreach ($product as $item) { ?>
-                                <option value="<?= $item->id_product ?>"><?= $item->nama_product ?></option>
+                                    <option value="<?= $item->id_product ?>"><?= $item->nama_product ?></option>
                                 <?php } ?>
                             </select>
                             <input type="hidden" name="harga_satuan" id="harga_satuan">
@@ -42,14 +42,14 @@
                     <div class="form-group row">
                         <label for="qty" class="col-sm-4 col-form-label">Qty</label>
                         <div class="col-sm-8">
-                        <input type="number" min="1" value="1" class="form-control" id="qty" name="qty">
+                            <input type="number" min="1" value="1" class="form-control" id="qty" name="qty">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-4 col-form-label"></label>
                         <div class="col-sm-8">
-                        <a href="<?= base_url('user/transaksi/penjualan') ?>" class="btn btn-secondary"> Kembali</a>
-                        <button type="submit" class="btn btn-primary"> Tambah</button>
+                            <a href="<?= base_url('user/transaksi/penjualan') ?>" class="btn btn-secondary"> Kembali</a>
+                            <button type="submit" class="btn btn-primary"> Tambah</button>
                         </div>
                     </div>
                 </form>
@@ -69,36 +69,36 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
+                                <?php
                                 $no = 1;
                                 $grandtotal = 0;
                                 foreach ($detail_penjualan as $item) { ?>
-                                <?php 
-                                $grandtotal += $item->subtotal;
-                                ?>
-                                <tr>
-                                    <td><?= $no++ ?></td>
-                                    <td><?= $item->nama_product?></td>
-                                    <td><?= $item->qty?></td>
-                                    <td><?= $item->harga_satuan?></td>
-                                    <td><?= $item->subtotal?></td>
-                                    <td class="text-center">
-                                        <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
+                                    <?php
+                                    $grandtotal += $item->subtotal;
+                                    ?>
+                                    <tr>
+                                        <td><?= $no++ ?></td>
+                                        <td><?= $item->nama_product ?></td>
+                                        <td><?= $item->qty ?></td>
+                                        <td class="text-right">Rp <?= number_format($item->harga_satuan, 2, ',', '.') ?></td>
+                                        <td class="text-right">Rp <?= number_format($item->subtotal, 2, ',', '.') ?></td>
+                                        <td class="text-center">
+                                            <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
                                 <?php } ?>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th colspan="4">Grandtotal</th>
-                                    <th><?= $grandtotal ?></th>
+                                    <th class="text-right">Rp <?= number_format($grandtotal, 2, ',', '.') ?></th>
                                     <th></th>
                                 </tr>
                             </tfoot>
                         </table>
                         <input type="hidden" id="grandtot" value="<?= $grandtotal ?>">
                     </div>
-                    <?php 
+                    <?php
                     if (count($detail_penjualan) > 0) {
                         # code...
                         echo '<button class="btn btn-success" data-toggle="modal" data-target="#bayar"> Bayar</button>';
@@ -106,14 +106,14 @@
                         # code...
                         echo '<button class="btn btn-danger" disabled> Bayar</button>';
                     }
-                    
+
                     ?>
                 </div>
             </div>
         </div>
     </section>
 </div>
-<?= $this->include('transaksi/penjualan/bayar');?>
+<?= $this->include('transaksi/penjualan/bayar'); ?>
 <script src="<?= base_url('/js/vanilla-tilt.js'); ?>"></script>
 <script type="text/javascript">
     VanillaTilt.init(document.querySelectorAll(".info_card"), {
@@ -132,13 +132,13 @@
             var value = $(this).val();
             if (value) {
                 $.ajax({
-                    url : "<?= base_url('Transaksi/list_product')?>",
-                    method : "post",
-                    type : "json",
-                    data : {
-                        id_product : value
+                    url: "<?= base_url('Transaksi/list_product') ?>",
+                    method: "post",
+                    type: "json",
+                    data: {
+                        id_product: value
                     },
-                    success : function(response) {
+                    success: function(response) {
                         var obj = JSON.parse(response);
                         $("#harga_satuan").val(obj.harga_satuan)
                     }
@@ -186,5 +186,5 @@
             $("#div-bawah").css("display", "none");
             $("#btn-simpan").prop("disabled", true);
         }
-});
+    });
 </script>

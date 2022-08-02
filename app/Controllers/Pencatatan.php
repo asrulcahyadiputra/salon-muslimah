@@ -331,7 +331,7 @@ class Pencatatan extends BaseController
         $this->jurnal->generateJurnal($akun, date('Y-m-d'), $no_akun, 'Transaksi Beban ', 'd', set_number($totalBeban[0]));
         $this->jurnal->generateJurnal($akun, date('Y-m-d'), '111', 'Transaksi Beban ', 'k', set_number($totalBeban[0]));
 
-        session()->setFlashData('pesan2', 'Data berhasil ditambahkan.');
+        session()->setFlashData('sukses', 'Data berhasil ditambahkan.');
 
         return redirect()->to('/user/dashboard/pencatatan-kas/pengeluaran/beban');
     }
@@ -609,6 +609,8 @@ class Pencatatan extends BaseController
             $this->jurnal->generateJurnal($id_transaksi, date('Y-m-d'), '312', 'Prive', 'd', $grandtotal);
             $this->jurnal->generateJurnal($id_transaksi, date('Y-m-d'), '111', 'Prive', 'k', $grandtotal);
         }
+
+        session()->setFlashdata('sukses', 'Data berhasil ditambahkan');
 
         return redirect()->to('/user/dashboard/pencatatan-kas/pengeluaran/lainnya');
     }
