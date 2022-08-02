@@ -16,9 +16,12 @@
             </div>
         </div>
     </section>
-    <?php if (session()->getFlashdata('pesan')) : ?>
-        <div class="alert alert-success" role="alert">
-            <?= session()->getFlashdata('pesan'); ?>
+    <?php if (session()->getFlashdata('sukses')) : ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Sukses!</strong> <?= session()->getFlashdata('sukses') ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     <?php endif; ?>
     <section class="section" style="background-color: white; padding: 2rem; box-shadow: 1px 2px 3px 1px rgba(0,0,0,0.75); border-radius: 15px;">
@@ -42,6 +45,7 @@
                                 <th align="center">Merk</th>
                                 <th align="center">Satuan</th>
                                 <th align="center">Kategori</th>
+                                <th align="center">Harga</th>
                                 <th class="text-center"">Action</th>
                             </tr>
                         </thead>
@@ -56,10 +60,11 @@
                                     <td><?= $item->merk ?></td>
                                     <td><?= $item->nama_satuan ?></td>
                                     <td><?= $item->kategori ?></td>
-                               
+                                    <td class=" text-right"><?= 'Rp ' . number_format($item->harga_satuan, 2, ',', '.') ?></td>
+
                                 <td class=" text-center">
                                     <a class="btn btn-warning" id="btn-edit" data-id="<?= $item->id_product ?>">Edit</a>
-                                    </td>
+                                </td>
                             </tr>
                         <?php } ?>
                         </tbody>
@@ -72,6 +77,7 @@
 <?= $this->include('masterdata/product/add'); ?>
 <?= $this->include('masterdata/product/edit'); ?>
 <script src="<?= base_url('/js/vanilla-tilt.js'); ?>"></script>
+<script src="<?= base_url() ?>/validate/jquery.validate.min.js"></script>
 <script type="text/javascript">
     VanillaTilt.init(document.querySelectorAll(".info_card"), {
         max: 25,
@@ -109,4 +115,52 @@
             }
         });
     }
+
+    $('#form-tambah').validate({
+        errorClass: "control-label",
+        highlight: function(element, errorClass) {
+            $(element).parent().addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parent().removeClass('error');
+        },
+        rules: {
+            nama_product: {
+                required: true
+            },
+            merk: {
+                required: true
+            },
+            harga_satuan: {
+                required: true
+            }
+        },
+        submitHandler: function(form, event) {
+            $('#form-tambah').submit();
+        }
+    });
+
+    $('#form-edit').validate({
+        errorClass: "control-label",
+        highlight: function(element, errorClass) {
+            $(element).parent().addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parent().removeClass('has-error');
+        },
+        rules: {
+            nama_product: {
+                required: true
+            },
+            merk: {
+                required: true
+            },
+            harga_satuan: {
+                required: true
+            }
+        },
+        submitHandler: function(form, event) {
+            $('#form-edit').submit();
+        }
+    });
 </script>

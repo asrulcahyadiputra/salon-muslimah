@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/user/dashboard/masterdata/product/update" method="post">
+            <form action="/user/dashboard/masterdata/product/update" method="post" id="form-edit">
                 <div class="modal-body">
                     <div class="form-group row">
                         <label for="id_product" class="col-sm-3 col-form-label">ID Product</label>
@@ -40,7 +40,7 @@
                     <div class="form-group row">
                         <label for="harga_satuan" class="col-sm-3 col-form-label">Harga Satuan</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="harga_satuan" name="harga_satuan" placeholder="Harga Satuan" required>
+                            <input type="text" class="form-control" id="harga_satuan" name="harga_satuan" placeholder="Harga Satuan" data-type="currency">
                         </div>
                     </div>
                     <div class="form-group row">

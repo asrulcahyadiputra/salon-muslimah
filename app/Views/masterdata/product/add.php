@@ -7,24 +7,24 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/user/dashboard/masterdata/product/save" method="post">
+            <form action="/user/dashboard/masterdata/product/save" method="post" id="form-tambah">
                 <div class="modal-body">
                     <div class="form-group row">
                         <label for="id_product" class="col-sm-3 col-form-label">ID Product</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="id_product" value="<?= $id_product ?>" name="id_product" placeholder="ID Product" required readonly>
+                            <input type="text" class="form-control" id="id_product" value="<?= $id_product ?>" name="id_product" placeholder="ID Product" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="nama_product" class="col-sm-3 col-form-label">Nama Product</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama_product" name="nama_product" placeholder="Nama Product" required>
+                            <input type="text" class="form-control" id="nama_product" name="nama_product" placeholder="Nama Product">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="merk" class="col-sm-3 col-form-label">Merk</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="merk" name="merk" placeholder="Merk" required>
+                            <input type="text" class="form-control" id="merk" name="merk" placeholder="Merk">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -40,7 +40,7 @@
                     <div class="form-group row">
                         <label for="harga_satuan" class="col-sm-3 col-form-label">Harga Satuan</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="harga_satuan" name="harga_satuan" placeholder="Harga Satuan" required>
+                            <input type="text" class="form-control" id="harga_satuan" name="harga_satuan" placeholder="Harga Satuan" data-type="currency">
                         </div>
                     </div>
                     <div class="form-group row">

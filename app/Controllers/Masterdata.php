@@ -531,7 +531,7 @@ class Masterdata extends BaseController
         $kategori = $this->request->getVar('kategori');
         $stok_akhir = $this->request->getVar('stok_akhir');
         $min_stok = $this->request->getVar('min_stok');
-        $harga_satuan = $this->request->getVar('harga_satuan');
+        $harga_satuan = set_number($this->request->getVar('harga_satuan'));
         $satuan = $this->request->getVar('satuan');
         $merk = $this->request->getVar('merk');
         $data = [
@@ -547,6 +547,7 @@ class Masterdata extends BaseController
         $this->db->table('tb_product')
             ->insert($data);
 
+        session()->setFlashdata('sukses', 'Data Produk Berhasil di tambahkan');
         return redirect()->to('/user/dashboard/masterdata/product');
     }
     public function productUpdate()
@@ -557,7 +558,7 @@ class Masterdata extends BaseController
         // $stok_akhir = $this->request->getVar('stok_akhir');
         // $min_stok = $this->request->getVar('min_stok');
         $satuan = $this->request->getVar('satuan');
-        $harga_satuan = $this->request->getVar('harga_satuan');
+        $harga_satuan = set_number($this->request->getVar('harga_satuan'));
         $merk = $this->request->getVar('merk');
         $data = [
             'id_product'    => $id_product,
@@ -572,7 +573,7 @@ class Masterdata extends BaseController
         $this->db->table('tb_product')
             ->where('id_product', $id_product)
             ->update($data);
-
+        session()->setFlashdata('sukses', 'Data Produk Berhasil di update');
         return redirect()->to('/user/dashboard/masterdata/product');
     }
 
