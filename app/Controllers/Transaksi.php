@@ -871,6 +871,7 @@ class Transaksi extends BaseController
         ];
         $this->db->table('tb_bayar')->insert($tb_bayar);
 
+        session()->setFlashdata('sukses', 'Data Transaksi Service di tambahkan');
         return redirect()->to('user/transaksi/service');
     }
 
@@ -897,6 +898,7 @@ class Transaksi extends BaseController
         $this->jurnal->generateJurnal($id_transaksi, date('Y-m-d'), '111', 'Transaksi service', 'd', set_number($total_transaksi));
         $this->jurnal->generateJurnal($id_transaksi, date('Y-m-d'), '411', 'Transaksi service', 'k', set_number($total_transaksi));
 
+        session()->setFlashdata('sukses', 'Data Transaksi Service di bayar');
         return redirect()->to('user/transaksi/service');
     }
 
