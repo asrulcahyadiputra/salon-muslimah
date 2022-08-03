@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 27 Jul 2022 pada 02.38
+-- Waktu pembuatan: 02 Agu 2022 pada 16.47
 -- Versi server: 5.7.32
 -- Versi PHP: 7.4.12
 
@@ -55,7 +55,13 @@ INSERT INTO `absenkaryawan` (`id`, `idKaryawan`, `hadir`, `absen`, `izin`) VALUE
 (20, 'K001', '1', NULL, NULL),
 (21, 'K002', '1', NULL, NULL),
 (22, 'K003', '1', NULL, NULL),
-(23, 'K004', NULL, '1', NULL);
+(23, 'K004', NULL, '1', NULL),
+(24, 'K009', NULL, NULL, NULL),
+(25, 'K001', '1', NULL, NULL),
+(26, 'K002', '1', NULL, NULL),
+(27, 'K003', '1', NULL, NULL),
+(28, 'K0010', NULL, NULL, NULL),
+(29, 'K0011', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -96,7 +102,10 @@ INSERT INTO `akun` (`id`, `total`, `namaAkun`, `kodeAkun`, `header`, `posisi_d_c
 (14, NULL, 'Utang Usaha', '211', '2', 'k', 0, 0, 0),
 (15, NULL, 'Akumulasi Penyusutan Peralatan', '123', '1', 'k', 0, 0, 0),
 (16, NULL, 'Utang Bank', '221', '2', 'k', 0, 0, 0),
-(17, NULL, 'Beban  Administrasi', '518', '5', NULL, 0, 0, 0);
+(17, NULL, 'Beban  Administrasi', '518', '5', NULL, 0, 0, 0),
+(18, NULL, 'Beban Test', '519', '5', NULL, 0, 0, 0),
+(19, NULL, 'Beban test', '51001', '5', NULL, 0, 0, 0),
+(20, NULL, 'Beban test 1', '51101', '5', NULL, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -552,7 +561,12 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (351, '::1', 'daniel@gmail.com', 3, '2022-07-21 06:18:31', 1),
 (352, '::1', 'dimas@gmail.com', 13, '2022-07-21 12:56:04', 1),
 (353, '::1', 'pemiliki', NULL, '2022-07-27 04:55:13', 0),
-(354, '::1', 'daniel@gmail.com', 3, '2022-07-27 04:55:22', 1);
+(354, '::1', 'daniel@gmail.com', 3, '2022-07-27 04:55:22', 1),
+(355, '::1', 'daniel@gmail.com', 3, '2022-07-27 10:41:39', 1),
+(356, '::1', 'daniel@gmail.com', 3, '2022-07-27 16:09:37', 1),
+(357, '::1', 'daniel@gmail.com', 3, '2022-08-01 06:50:33', 1),
+(358, '::1', 'pemilik', NULL, '2022-08-02 17:06:40', 0),
+(359, '::1', 'daniel@gmail.com', 3, '2022-08-02 17:06:47', 1);
 
 -- --------------------------------------------------------
 
@@ -704,7 +718,9 @@ INSERT INTO `databeban` (`id`, `jenisBeban`, `akun`, `totalBeban`, `header`) VAL
 (31, '517-Beban Sewa', 'TPB004', 5000000, ''),
 (32, '520-Beban Gaji', 'TPB005', 1500000, ''),
 (33, '516-Beban Air', 'TPB006', 100000, ''),
-(34, '517-Beban Sewa', 'TPB007', 15000, '');
+(34, '517-Beban Sewa', 'TPB007', 15000, ''),
+(35, '515-Beban Listrik', 'TPB008', 100000, ''),
+(36, '517-Beban Sewa', 'TPB009', 100000, '');
 
 -- --------------------------------------------------------
 
@@ -788,7 +804,9 @@ INSERT INTO `datakelolabeban` (`id`, `akun`, `tanggalInputBeban`, `statusPembaya
 (30, 'TPB004', '2022-07-21', 'Sudah Membayar', ''),
 (31, 'TPB005', '2022-07-21', NULL, ''),
 (32, 'TPB006', '2022-07-27', NULL, ''),
-(33, 'TPB007', '2022-07-27', NULL, '');
+(33, 'TPB007', '2022-07-27', NULL, ''),
+(34, 'TPB008', '2022-08-02', NULL, ''),
+(35, 'TPB009', '2022-08-02', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -827,7 +845,8 @@ CREATE TABLE `datakelolatransaksilainnya` (
 INSERT INTO `datakelolatransaksilainnya` (`id`, `akun`, `tanggalInputTransaksi`, `statusPembayaran`) VALUES
 (8, 'T1101', '2022-07-13', NULL),
 (9, 'T1102', '2022-07-13', NULL),
-(10, 'T1103', '2022-07-21', NULL);
+(10, 'T1103', '2022-07-21', NULL),
+(11, 'T1104', '2022-08-02', NULL);
 
 -- --------------------------------------------------------
 
@@ -865,7 +884,8 @@ CREATE TABLE `datatransaksilainnya` (
 INSERT INTO `datatransaksilainnya` (`id`, `keteranganTransaksi`, `jenisTransaksi`, `akun`, `totalTransaksi`) VALUES
 (8, 'Modal Awal', 'Modal', 'T1101', 10000000),
 (9, 'Prive', 'Prive', 'T1102', 3000000),
-(10, 'Prive', 'Prive', 'T1103', 15000);
+(10, 'Prive', 'Prive', 'T1103', 15000),
+(11, 'prive', 'Prive', 'T1104', 10000);
 
 -- --------------------------------------------------------
 
@@ -952,7 +972,9 @@ INSERT INTO `jenisservice` (`id`, `jenisService`, `harga_service`, `tarif`) VALU
 (3, 'facial wash', '15000', ''),
 (4, 'Haircut', '20000', ''),
 (5, 'Full', '1000000', NULL),
-(6, 'DEV ONLY', '10000000', NULL);
+(6, 'DEV ONLY', '10000000', NULL),
+(7, 'TEST1', '150000', NULL),
+(8, 'TEST2', '1450000', NULL);
 
 -- --------------------------------------------------------
 
@@ -998,14 +1020,17 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`id`, `namaKaryawan`, `role`, `noTelepon`, `tanggalBergabung`, `idKaryawan`, `serviceDikerjakan`, `bayaranPerProduk`, `tanggalPembayaranGaji`, `alamat`, `kode_jabatan`) VALUES
-(1, 'Camelia', 'Karyawan', '08123456789', '2021-12-15', 'K001', 5, 40000, '2022-07-13', 'Jl. Abc', '1'),
+(1, 'Camelia', 'Karyawan', '08123456789', '2021-12-15', 'K001', 5, 40000, '2022-08-02', 'Jl. Abc', '1'),
 (2, 'Vieska Update Test', 'Karyawan', '081122334455', '2021-12-15', 'K002', 3, 30000, '2022-07-08', 'Jl. Bcd', '2'),
 (3, 'Test Kary', 'Karyawan', '1234', '2022-07-13', 'K003', NULL, NULL, NULL, 'BDG', '3'),
 (4, 'Test Lagi Ah', 'Karyawan', '12345', '2022-07-14', 'K004', NULL, NULL, NULL, 'BDG', '3'),
 (5, 'PQR', 'Karyawan', '123455', '2022-07-14', 'K005', NULL, NULL, NULL, 'BDG', '3'),
 (6, 'XYZ', 'Karyawan', '123456', '2022-07-14', 'K006', NULL, NULL, NULL, 'BDG', '1'),
 (7, 'PQR', 'Karyawan', '123456', '2022-07-21', 'K007', NULL, NULL, NULL, '', '1'),
-(8, 'ZYT', 'Karyawan', '121212121', '2022-07-21', 'K008', NULL, NULL, NULL, '', '1');
+(8, 'ZYT', 'Karyawan', '121212121', '2022-07-21', 'K008', NULL, NULL, NULL, '', '1'),
+(9, 'TEST', 'Karyawan', '123456', '2022-07-27', 'K009', NULL, NULL, NULL, 'test', '1'),
+(10, 'test', 'Karyawan', '13213123', '2022-08-02', 'K0010', NULL, NULL, NULL, 'test', '1'),
+(11, 'test3', 'Karyawan', '121321321312', '2022-08-02', 'K0011', NULL, NULL, NULL, 'test', '1');
 
 -- --------------------------------------------------------
 
@@ -1230,7 +1255,13 @@ INSERT INTO `tb_aset` (`id`, `id_aset`, `nama`, `jenis_aset`, `harga`, `satuan`)
 (1, 'A001', 'Gunting Update Test', 'Aset Tetap', 150000, 'Unit'),
 (2, 'A002', 'Pengering Rambung', 'Aset Tetap', 250000, 'Pcs'),
 (4, 'A003', 'Handphone ', 'Aset Lancar', 2000000, 'Unit'),
-(5, 'A004', 'Komputer', 'Aset Tetap', 32000000, 'Unit');
+(5, 'A004', 'Komputer', 'Aset Tetap', 32000000, 'Unit'),
+(6, 'A005', 'test', 'Aset Tetap', 120000, 'Unit'),
+(7, 'A006', 'test2', 'Aset Lancar', 150000, 'Unit'),
+(8, 'A007', 'TEST3', 'Aset Lancar', 150000, 'Unit'),
+(9, 'A008', 'test4', 'Aset Lancar', 200000, 'Unit'),
+(10, 'A009', 'test5', 'Aset Lancar', 400000, 'Unit'),
+(11, 'A010', 'test6 UPDT', 'Aset Lancar', 150000, 'Unit');
 
 -- --------------------------------------------------------
 
@@ -1258,7 +1289,9 @@ INSERT INTO `tb_bayar` (`id`, `id_bayar`, `id_transaksi`, `status`, `total_trans
 (21, 'HD33UI2Js5', 'SN20220721003', 'sudah bayar', 25000, 25000, 0),
 (22, 'DBYg4mFILQ', 'SN20220727004', 'sudah bayar', 30000, 30000, 0),
 (23, 'azd7G1OaH7', 'SN20220727005', 'sudah bayar', 15000, 15000, 0),
-(24, 'Vtkyh6YlCX', 'SN20220727006', 'sudah bayar', 30000, 30000, 0);
+(24, 'Vtkyh6YlCX', 'SN20220727006', 'sudah bayar', 30000, 30000, 0),
+(25, 'RzuP4J3dWr', 'SN20220802007', 'sudah bayar', 165000, 165000, 0),
+(26, 'xflFG8GBVh', 'SN20220802008', 'sudah bayar', 30000, 30000, 0);
 
 -- --------------------------------------------------------
 
@@ -1283,7 +1316,9 @@ CREATE TABLE `tb_detail_pengeluaran_aset` (
 INSERT INTO `tb_detail_pengeluaran_aset` (`id`, `id_transaksi`, `id_aset`, `jenis_aset`, `harga_satuan`, `qty`, `subtotal`) VALUES
 (12, 'TRXA20220713001', 'A001', 'Aset Tetap', 150000, 1, 150000),
 (13, 'TRXA20220721002', 'A001', 'Aset Tetap', 150000, 1, 150000),
-(14, 'TRXA20220721002', 'A004', 'Aset Tetap', 32000000, 1, 32000000);
+(14, 'TRXA20220721002', 'A004', 'Aset Tetap', 32000000, 1, 32000000),
+(15, 'TRXA20220727003', 'A001', 'Aset Tetap', 150000, 1, 150000),
+(16, 'TRXA20220802003', 'A001', 'Aset Tetap', 150000, 1, 150000);
 
 -- --------------------------------------------------------
 
@@ -1309,7 +1344,10 @@ INSERT INTO `tb_detail_service` (`id`, `id_transaksi`, `id_service`, `harga`) VA
 (36, 'SN20220721003', '1', 25000),
 (37, 'SN20220727004', '2', 30000),
 (38, 'SN20220727005', '3', 15000),
-(39, 'SN20220727006', '2', 30000);
+(39, 'SN20220727006', '2', 30000),
+(40, 'SN20220802007', '7', 150000),
+(41, 'SN20220802007', '3', 15000),
+(42, 'SN20220802008', '2', 30000);
 
 -- --------------------------------------------------------
 
@@ -1337,7 +1375,10 @@ INSERT INTO `tb_detail_transaksi` (`id`, `id_transaksi`, `id_product`, `qty`, `h
 (29, 'PNJ20220721003', 'PRD006', 1, 15000, 15000),
 (34, 'PMB20220727001', 'PRD001', 10, 25000, 250000),
 (35, 'PMB20220727001', 'PRD002', 10, 25000, 250000),
-(36, 'PNJ20220727004', 'PRD006', 1, 15000, 15000);
+(36, 'PNJ20220727004', 'PRD006', 1, 15000, 15000),
+(37, 'PNJ20220802004', 'PRD005', 1, 150000, 150000),
+(38, 'PNJ20220802005', 'PRD006', 1, 15000, 15000),
+(39, 'PMB20220802002', 'PRD002', 1, 25000, 25000);
 
 -- --------------------------------------------------------
 
@@ -1358,7 +1399,10 @@ CREATE TABLE `tb_jabatan` (
 INSERT INTO `tb_jabatan` (`id`, `deskripsi`, `gapok`) VALUES
 (1, 'Terapist', 950000),
 (2, 'Admin Update test', 500000),
-(3, 'Test Again', 1000000);
+(3, 'Test Again', 1000000),
+(4, 'test1', 1200000),
+(5, 'test2', 1500000),
+(6, 'test3', 2750000);
 
 -- --------------------------------------------------------
 
@@ -1428,7 +1472,27 @@ INSERT INTO `tb_jurnal` (`id`, `id_referensi`, `tgl_jurnal`, `no_coa`, `keterang
 (139, 'TPB007', '2022-07-27', 517, 'Transaksi Beban ', 'd', 15000),
 (140, 'TPB007', '2022-07-27', 111, 'Transaksi Beban ', 'k', 15000),
 (141, 'SN20220727006', '2022-07-27', 111, 'Transaksi service', 'd', 30000),
-(142, 'SN20220727006', '2022-07-27', 411, 'Transaksi service', 'k', 30000);
+(142, 'SN20220727006', '2022-07-27', 411, 'Transaksi service', 'k', 30000),
+(143, 'SN20220802007', '2022-08-02', 111, 'Transaksi service', 'd', 165000),
+(144, 'SN20220802007', '2022-08-02', 411, 'Transaksi service', 'k', 165000),
+(145, 'SN20220802008', '2022-08-02', 111, 'Transaksi service', 'd', 30000),
+(146, 'SN20220802008', '2022-08-02', 411, 'Transaksi service', 'k', 30000),
+(147, 'PNJ20220802004', '2022-08-02', 111, 'Penjualan Produk', 'd', 150000),
+(148, 'PNJ20220802004', '2022-08-02', 400, 'Penjualan Produk', 'k', 150000),
+(149, 'PNJ20220802005', '2022-08-02', 111, 'Penjualan Produk', 'd', 15000),
+(150, 'PNJ20220802005', '2022-08-02', 400, 'Penjualan Produk', 'k', 15000),
+(151, 'PMB20220802002', '2022-08-02', 500, 'Pembelian Bahan', 'd', 25000),
+(152, 'PMB20220802002', '2022-08-02', 111, 'Pembelian Bahan', 'k', 25000),
+(153, 'TRXA20220802003', '2022-08-02', 122, 'Pengeluaran Aset', 'd', 150000),
+(154, 'TRXA20220802003', '2022-08-02', 111, 'Pengeluaran Aset', 'k', 150000),
+(155, 'PAYROLL20220802002', '2022-08-02', 520, 'Penggajian periode 2022-08 ', 'd', 950000),
+(156, 'PAYROLL20220802002', '2022-08-02', 111, 'Penggajian periode 2022-08 ', 'k', 950000),
+(157, 'TPB008', '2022-08-02', 515, 'Transaksi Beban ', 'd', 100000),
+(158, 'TPB008', '2022-08-02', 111, 'Transaksi Beban ', 'k', 100000),
+(159, 'TPB009', '2022-08-02', 517, 'Transaksi Beban ', 'd', 100000),
+(160, 'TPB009', '2022-08-02', 111, 'Transaksi Beban ', 'k', 100000),
+(161, 'TRX-L-713181940', '2022-08-02', 312, 'Prive', 'd', 10000),
+(162, 'TRX-L-713181940', '2022-08-02', 111, 'Prive', 'k', 10000);
 
 -- --------------------------------------------------------
 
@@ -1449,7 +1513,9 @@ INSERT INTO `tb_kategori` (`id`, `keterangan`) VALUES
 (1, 'Operasional'),
 (2, 'Non Operasional'),
 (3, 'Kategori 3'),
-(4, 'Test Kategori');
+(4, 'Test Kategori'),
+(5, 'test1'),
+(6, 'test2');
 
 -- --------------------------------------------------------
 
@@ -1473,7 +1539,10 @@ INSERT INTO `tb_pelanggan` (`id`, `id_pelanggan`, `nama`, `alamat`, `no_telp`) V
 (1, 'PEL001', 'Kamelia Lupakanlah Aku', 'Jakarta', '112233'),
 (2, 'PEL002', 'Kamelia', 'Bandung', '00998877'),
 (3, 'PEL003', 'Test PEL', 'Bandung', '111111'),
-(4, 'PEL004', 'Test Again', 'Jakarta', '1234567');
+(4, 'PEL004', 'Test Again', 'Jakarta', '1234567'),
+(5, 'PEL005', 'test1', 'Bandung', '123456'),
+(6, 'PEL006', 'test2', 'Bandung', '123456'),
+(7, 'PEL007', 'test3', 'Bandung', '123456');
 
 -- --------------------------------------------------------
 
@@ -1505,7 +1574,8 @@ CREATE TABLE `tb_penggajian` (
 
 INSERT INTO `tb_penggajian` (`id`, `id_gaji`, `id_pegawai`, `tgl_gaji`, `periode`, `total_service`, `gajipokok`, `persentase_bonus`, `jml_service`, `bonus_service`, `gaji_bersih`, `jml_hadir`, `bonus_hadir`, `total_bonus`, `total_bonus_hadir`) VALUES
 (3, NULL, NULL, NULL, '1970-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'PAYROLL20220713001', 'K001', '2022-07-13', '2022-07', 35000, 950000, 0, NULL, 0, 955000, 1, 5000, NULL, 5000);
+(4, 'PAYROLL20220713001', 'K001', '2022-07-13', '2022-07', 35000, 950000, 0, NULL, 0, 955000, 1, 5000, NULL, 5000),
+(5, 'PAYROLL20220802002', 'K001', '2022-08-02', '2022-08', 90000, 950000, 0, NULL, 0, 950000, 0, 5000, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1533,10 +1603,12 @@ CREATE TABLE `tb_product` (
 
 INSERT INTO `tb_product` (`id`, `id_product`, `nama_product`, `id_kategori`, `harga_satuan`, `merk`, `stok_akhir`, `min_stok`, `status`, `satuan`, `created_at`) VALUES
 (1, 'PRD001', 'Shampoo', 1, 25000, 'Test', '8', NULL, 1, '2', '2022-06-25 15:45:48'),
-(2, 'PRD002', 'Vitamin Rambut', 1, 25000, 'Test', '8', '6', 1, '2', '2022-06-25 16:00:36'),
+(2, 'PRD002', 'Vitamin Rambut', 1, 25000, 'Test', '9', '6', 1, '2', '2022-06-25 16:00:36'),
 (3, 'PRD003', 'Product non operasionl', 2, 15000, '-', '0', '10', 1, '2', '2022-06-27 14:35:26'),
-(4, 'PRD005', 'Dev Test Update Test', 2, 150000, '-', '0', '10', 1, '4', '2022-07-13 13:13:14'),
-(5, 'PRD006', 'Test Again', 2, 15000, '-', '0', '10', 1, '4', '2022-07-13 13:28:55');
+(4, 'PRD005', 'Dev Test Update Test', 2, 150000, '-', '-1', '10', 1, '4', '2022-07-13 13:13:14'),
+(5, 'PRD006', 'Test Again', 2, 15000, '-', '-1', '10', 1, '4', '2022-07-13 13:28:55'),
+(6, 'PRD007', 'TEST1', 1, 120000, 'test', NULL, NULL, 1, '1', '2022-08-02 10:15:07'),
+(7, 'PRD008', 'TEST2', 1, 150000, 'test', NULL, NULL, 1, '1', '2022-08-02 10:19:51');
 
 -- --------------------------------------------------------
 
@@ -1557,7 +1629,9 @@ INSERT INTO `tb_satuan` (`id`, `keterangan`) VALUES
 (1, 'Unit'),
 (2, 'Pcs'),
 (3, 'Kilo'),
-(4, 'Testing Satuan');
+(4, 'Testing Satuan'),
+(5, 'test1'),
+(6, 'test2');
 
 -- --------------------------------------------------------
 
@@ -1585,7 +1659,8 @@ INSERT INTO `tb_stok` (`id`, `tanggal`, `id_transaksi`, `id_karyawan`, `id_bahan
 (6, '2022-07-27', 'PMB20220727001', NULL, 'PRD002', 10, 'in', '2022-07-27 06:44:13'),
 (7, '2022-07-27', 'SN20220713001', 'K001', 'PRD001', 1, 'out', '2022-07-27 06:46:26'),
 (8, '2022-07-27', 'SN20220713001', 'K001', 'PRD002', 2, 'out', '2022-07-27 06:46:26'),
-(9, '2022-07-27', 'SN20220713002', 'K001', 'PRD001', 1, 'out', '2022-07-27 06:47:05');
+(9, '2022-07-27', 'SN20220713002', 'K001', 'PRD001', 1, 'out', '2022-07-27 06:47:05'),
+(10, '2022-08-02', 'PMB20220802002', NULL, 'PRD002', 1, 'in', '2022-08-02 19:21:17');
 
 -- --------------------------------------------------------
 
@@ -1618,7 +1693,12 @@ INSERT INTO `tb_transaksi` (`id`, `id_transaksi`, `tgl_transaksi`, `jenis`, `sta
 (31, 'TRXA20220721002', '2022-07-21', 'Pengeluaran aset', 'selesai', 32150000, 0, 32150000, NULL, 'Tunai', 'XYZ'),
 (32, 'PNJ20220721003', '2022-07-21', 'Penjualan', 'selesai', 30000, 0, 30000, 'Kamelia', 'Tunai', NULL),
 (35, 'PMB20220727001', '2022-07-27', 'Pembelian', 'selesai', 500000, 0, 500000, NULL, 'Tunai', 'XYZ'),
-(36, 'PNJ20220727004', '2022-07-27', 'Penjualan', 'ongoing', NULL, NULL, NULL, NULL, NULL, NULL);
+(36, 'PNJ20220727004', '2022-07-27', 'Penjualan', 'ongoing', NULL, NULL, NULL, NULL, NULL, NULL),
+(37, 'TRXA20220727003', '2022-07-27', 'Pengeluaran aset', 'ongoing', NULL, NULL, NULL, NULL, NULL, NULL),
+(38, 'PNJ20220802004', '2022-08-02', 'Penjualan', 'selesai', 150000, 0, 150000, 'Test', 'Tunai', NULL),
+(39, 'PNJ20220802005', '2022-08-02', 'Penjualan', 'selesai', 15000, 0, 15000, 'Test', 'Tunai', NULL),
+(40, 'PMB20220802002', '2022-08-02', 'Pembelian', 'selesai', 25000, 0, 25000, NULL, 'Tunai', 'XYZ'),
+(41, 'TRXA20220802003', '2022-08-02', 'Pengeluaran aset', 'selesai', 150000, 0, 150000, NULL, 'Tunai', 'XYZ');
 
 -- --------------------------------------------------------
 
@@ -1653,7 +1733,9 @@ INSERT INTO `tb_transaksi_service` (`id`, `id_transaksi`, `tgl_transaksi`, `tgl_
 (21, 'SN20220721003', '2022-07-21', '2022-07-24', 'Service', 'selesai', 0, 25000, 'Kamelia', 'Tunai', 'Offline', 'Onsite', 'K001', NULL),
 (22, 'SN20220727004', '2022-07-27', '2022-07-27', 'Service', 'selesai', 0, 30000, 'Kamelia Lupakanlah Aku', 'Tunai', 'Offline', 'Onsite', 'K001', NULL),
 (23, 'SN20220727005', '2022-07-27', '2022-07-27', 'Service', 'selesai', 0, 15000, 'Test Again', 'Tunai', 'Offline', 'Onsite', 'K004', NULL),
-(25, 'SN20220727006', '2022-07-27', '2022-07-27', 'Service', 'selesai', 0, 30000, 'Test PEL', 'Tunai', 'Offline', 'Onsite', 'K002', NULL);
+(25, 'SN20220727006', '2022-07-27', '2022-07-27', 'Service', 'selesai', 0, 30000, 'Test PEL', 'Tunai', 'Offline', 'Onsite', 'K002', NULL),
+(26, 'SN20220802007', '2022-08-02', '2022-08-02', 'Service', 'selesai', 0, 165000, 'Kamelia Lupakanlah Aku', 'Tunai', 'Offline', 'Onsite', 'K001', NULL),
+(27, 'SN20220802008', '2022-08-02', '2022-08-02', 'Service', 'selesai', 0, 30000, 'test3', 'Tunai', 'Offline', 'Onsite', 'K006', NULL);
 
 -- --------------------------------------------------------
 
@@ -1751,7 +1833,13 @@ INSERT INTO `waktuabsensi` (`id`, `waktuAbsen`, `tanggalAbsen`, `idKaryawan`, `k
 (20, '00:00:00', '2022-07-27', 'K001', 'Hadir'),
 (21, '00:00:00', '2022-07-27', 'K002', 'Hadir'),
 (22, '00:00:00', '2022-07-27', 'K003', 'Hadir'),
-(23, '00:00:00', '2022-07-27', 'K004', 'Absen');
+(23, '00:00:00', '2022-07-27', 'K004', 'Absen'),
+(24, NULL, NULL, 'K009', NULL),
+(25, '00:00:00', '2022-08-02', 'K001', 'Hadir'),
+(26, '00:00:00', '2022-08-02', 'K002', 'Hadir'),
+(27, '00:00:00', '2022-08-02', 'K003', 'Hadir'),
+(28, NULL, NULL, 'K0010', NULL),
+(29, NULL, NULL, 'K0011', NULL);
 
 --
 -- Indexes for dumped tables
@@ -2123,13 +2211,13 @@ ALTER TABLE `waktuabsensi`
 -- AUTO_INCREMENT untuk tabel `absenkaryawan`
 --
 ALTER TABLE `absenkaryawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT untuk tabel `akun`
 --
 ALTER TABLE `akun`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_activation_attempts`
@@ -2147,7 +2235,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=355;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=360;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -2183,7 +2271,7 @@ ALTER TABLE `databahan`
 -- AUTO_INCREMENT untuk tabel `databeban`
 --
 ALTER TABLE `databeban`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `datakelolaadmin`
@@ -2207,7 +2295,7 @@ ALTER TABLE `datakelolabahan`
 -- AUTO_INCREMENT untuk tabel `datakelolabeban`
 --
 ALTER TABLE `datakelolabeban`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT untuk tabel `datakelolaservice`
@@ -2219,7 +2307,7 @@ ALTER TABLE `datakelolaservice`
 -- AUTO_INCREMENT untuk tabel `datakelolatransaksilainnya`
 --
 ALTER TABLE `datakelolatransaksilainnya`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `datatransaksi`
@@ -2231,7 +2319,7 @@ ALTER TABLE `datatransaksi`
 -- AUTO_INCREMENT untuk tabel `datatransaksilainnya`
 --
 ALTER TABLE `datatransaksilainnya`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `datatransaksiservice`
@@ -2255,7 +2343,7 @@ ALTER TABLE `jenisbeban`
 -- AUTO_INCREMENT untuk tabel `jenisservice`
 --
 ALTER TABLE `jenisservice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `jenistransaksilainnya`
@@ -2267,7 +2355,7 @@ ALTER TABLE `jenistransaksilainnya`
 -- AUTO_INCREMENT untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -2333,91 +2421,91 @@ ALTER TABLE `stock`
 -- AUTO_INCREMENT untuk tabel `tb_aset`
 --
 ALTER TABLE `tb_aset`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bayar`
 --
 ALTER TABLE `tb_bayar`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_detail_pengeluaran_aset`
 --
 ALTER TABLE `tb_detail_pengeluaran_aset`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_detail_service`
 --
 ALTER TABLE `tb_detail_service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_detail_transaksi`
 --
 ALTER TABLE `tb_detail_transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_jabatan`
 --
 ALTER TABLE `tb_jabatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_jurnal`
 --
 ALTER TABLE `tb_jurnal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_penggajian`
 --
 ALTER TABLE `tb_penggajian`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_product`
 --
 ALTER TABLE `tb_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_satuan`
 --
 ALTER TABLE `tb_satuan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_stok`
 --
 ALTER TABLE `tb_stok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transaksi_service`
 --
 ALTER TABLE `tb_transaksi_service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksigaji`
@@ -2435,7 +2523,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `waktuabsensi`
 --
 ALTER TABLE `waktuabsensi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
